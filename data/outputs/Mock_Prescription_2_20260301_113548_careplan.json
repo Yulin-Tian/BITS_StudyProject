@@ -1,0 +1,62 @@
+{
+  "file_name": "Mock_Prescription_2.docx",
+  "file_type": "docx",
+  "extraction_method": "python-docx",
+  "warnings": [],
+  "verified_text": "MOCK MEDICAL PRESCRIPTION\nTEST DATA ONLY - NOT VALID FOR DISPENSING OR CLINICAL USE\nRx (Medications & Instructions)\nAdditional Advice\nLifestyle: aim for 150 minutes/week of moderate activity; reduce sugary drinks; monitor BP 3x/week. Seek care for dizziness, swelling, or persistent cough.\nDISCLAIMER: This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication.",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication. Always confirm with your clinician or pharmacist.",
+    "clarification_questions": [],
+    "medications": [],
+    "tasks": [
+      {
+        "category": "other",
+        "instruction": "Aim for 150 minutes/week of moderate activity.",
+        "schedule": null,
+        "original_source": "Lifestyle: aim for 150 minutes/week of moderate activity;"
+      },
+      {
+        "category": "other",
+        "instruction": "Reduce sugary drinks.",
+        "schedule": null,
+        "original_source": "reduce sugary drinks;"
+      },
+      {
+        "category": "monitoring",
+        "instruction": "Monitor blood pressure 3 times a week.",
+        "schedule": null,
+        "original_source": "monitor BP 3x/week."
+      },
+      {
+        "category": "safety",
+        "instruction": "Seek care for dizziness.",
+        "schedule": null,
+        "original_source": "Seek care for dizziness,"
+      },
+      {
+        "category": "safety",
+        "instruction": "Seek care for swelling.",
+        "schedule": null,
+        "original_source": "swelling,"
+      },
+      {
+        "category": "safety",
+        "instruction": "Seek care for persistent cough.",
+        "schedule": null,
+        "original_source": "persistent cough."
+      }
+    ],
+    "red_flags": [
+      "Dizziness",
+      "Swelling",
+      "Persistent cough"
+    ],
+    "structured_summary": {
+      "follow_up": null,
+      "monitoring": "Monitor blood pressure 3 times a week.",
+      "lifestyle": "Aim for 150 minutes/week of moderate activity and reduce sugary drinks.",
+      "notes": "Seek care for dizziness, swelling, or persistent cough."
+    }
+  }
+}

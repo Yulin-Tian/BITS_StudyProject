@@ -1,0 +1,57 @@
+{
+  "file_name": "Mock_Prescription_4.docx",
+  "file_type": "docx",
+  "extraction_method": "python-docx",
+  "warnings": [],
+  "verified_text": "MOCK MEDICAL PRESCRIPTION\nTEST DATA ONLY - NOT VALID FOR DISPENSING OR CLINICAL USE\nRx (Medications & Instructions)\nAdditional Advice\nStay active with gentle walking; avoid heavy lifting for 48-72 hours. Use heat packs 15-20 minutes up to 3 times/day. Begin stretching when tolerated. Seek urgent help for fever, leg weakness, or loss of bladder/bowel control.\nDISCLAIMER: This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication.",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "Please confirm all information with your clinician or pharmacist before making any changes to your care plan.",
+    "clarification_questions": [],
+    "medications": [],
+    "tasks": [
+      {
+        "category": "other",
+        "instruction": "Stay active with gentle walking.",
+        "schedule": "As tolerated",
+        "original_source": "Stay active with gentle walking; avoid heavy lifting for 48-72 hours."
+      },
+      {
+        "category": "other",
+        "instruction": "Avoid heavy lifting.",
+        "schedule": "For 48-72 hours",
+        "original_source": "avoid heavy lifting for 48-72 hours."
+      },
+      {
+        "category": "other",
+        "instruction": "Use heat packs for 15-20 minutes.",
+        "schedule": "Up to 3 times/day",
+        "original_source": "Use heat packs 15-20 minutes up to 3 times/day."
+      },
+      {
+        "category": "other",
+        "instruction": "Begin stretching when tolerated.",
+        "schedule": "As tolerated",
+        "original_source": "Begin stretching when tolerated."
+      },
+      {
+        "category": "other",
+        "instruction": "Seek urgent help for fever, leg weakness, or loss of bladder/bowel control.",
+        "schedule": "Immediately if symptoms occur",
+        "original_source": "Seek urgent help for fever, leg weakness, or loss of bladder/bowel control."
+      }
+    ],
+    "red_flags": [
+      "Fever",
+      "Leg weakness",
+      "Loss of bladder control",
+      "Loss of bowel control"
+    ],
+    "structured_summary": {
+      "follow_up": null,
+      "monitoring": null,
+      "lifestyle": "Stay active with gentle walking, avoid heavy lifting for 48-72 hours, use heat packs, and begin stretching when tolerated.",
+      "notes": "This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication."
+    }
+  }
+}

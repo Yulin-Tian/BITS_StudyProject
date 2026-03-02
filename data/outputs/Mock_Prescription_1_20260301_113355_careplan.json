@@ -1,0 +1,52 @@
+{
+  "file_name": "Mock_Prescription_1.docx",
+  "file_type": "docx",
+  "extraction_method": "python-docx",
+  "warnings": [],
+  "verified_text": "MOCK MEDICAL PRESCRIPTION\nTEST DATA ONLY - NOT VALID FOR DISPENSING OR CLINICAL USE\nRx (Medications & Instructions)\nAdditional Advice\nMaintain hydration, rest, and warm salt-water gargles. Avoid sharing utensils. If symptoms worsen or persist beyond 7 days, return for reassessment.\nDISCLAIMER: This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication.",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "This information is for educational purposes only and should not be used as a substitute for professional medical advice. Always confirm with your clinician or pharmacist.",
+    "clarification_questions": [],
+    "medications": [],
+    "tasks": [
+      {
+        "category": "other",
+        "instruction": "Maintain hydration.",
+        "schedule": null,
+        "original_source": "Maintain hydration, rest, and warm salt-water gargles."
+      },
+      {
+        "category": "other",
+        "instruction": "Get plenty of rest.",
+        "schedule": null,
+        "original_source": "Maintain hydration, rest, and warm salt-water gargles."
+      },
+      {
+        "category": "other",
+        "instruction": "Use warm salt-water gargles.",
+        "schedule": null,
+        "original_source": "Maintain hydration, rest, and warm salt-water gargles."
+      },
+      {
+        "category": "other",
+        "instruction": "Avoid sharing utensils.",
+        "schedule": null,
+        "original_source": "Avoid sharing utensils."
+      },
+      {
+        "category": "monitoring",
+        "instruction": "If symptoms worsen or persist beyond 7 days, return for reassessment.",
+        "schedule": "7 days",
+        "original_source": "If symptoms worsen or persist beyond 7 days, return for reassessment."
+      }
+    ],
+    "red_flags": [],
+    "structured_summary": {
+      "follow_up": "Return for reassessment if symptoms worsen or persist beyond 7 days.",
+      "monitoring": "Watch for worsening symptoms.",
+      "lifestyle": "Stay hydrated, rest, and maintain good hygiene.",
+      "notes": "This is a simulated prescription created solely for application testing and demonstration."
+    }
+  }
+}

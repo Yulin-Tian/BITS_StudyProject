@@ -1,0 +1,48 @@
+{
+  "file_name": "Prescription Example 2 (Image).jpg",
+  "file_type": "image",
+  "extraction_method": "tesseract (image)",
+  "warnings": [],
+  "verified_text": "Prescription\n\nDoctors information\n\nDoctor's name: Anna Ludwig, MD\n\nMedical eanee number: 00-9987-96\n\nCinientogpital address: St Charles, Oak St\n\nEmail address: annaludwig@ stoharles.org\n\nPhone number: 678-94298\n\nPatient's information\n\nPatient's name: Karlene Hizon\n\nDate of birth: March 5, 1953\n\nSex: Female\n\nAdaregs: Allentown Ave cor Methad St, CA\n\nEmail address: Karlene @ amail.com\n\nPhone number: 789-244-12\n\nIneurance information: AlrustInsuranoe - Premium\n\nProceription\nMedication Dosage Frequency and duration Instructions\nTuprofen 400mg tab Viablet Take orally, every 6 hours for | Take wilh food. Do not\n\n5 days exceed 240mg in 24 hours.\n\nRemarks\n\nPatient advised to avoid other NSAIDs (Nonsteroidal Anti-Infiarmmatory Drugs) concurrently.\nMonitor for any signs of stomiach discarnfont or adverse reactions.\n\nDoctor's nama andl signature:\n\nDate:\n\nAnaad ucbariy\n\nhntps <taww carepasron.corny\n\nOctober 29, 2024\n\nsane carepaton",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "Please confirm all information with your clinician or pharmacist.",
+    "clarification_questions": [],
+    "medications": [
+      {
+        "name": "Tuprofen",
+        "strength": "400mg",
+        "form": "tablet",
+        "dosage": "Take orally",
+        "frequency": "every 6 hours",
+        "timing": null,
+        "duration": "5 days",
+        "original_line": "Tuprofen 400mg tab Viablet Take orally, every 6 hours for | Take wilh food. Do not exceed 240mg in 24 hours.",
+        "confidence": "medium"
+      }
+    ],
+    "tasks": [
+      {
+        "category": "medication",
+        "instruction": "Take Tuprofen with food.",
+        "schedule": "Every 6 hours for 5 days",
+        "original_source": "Proceription Medication Dosage Frequency and duration Instructions"
+      },
+      {
+        "category": "monitoring",
+        "instruction": "Monitor for any signs of stomach discomfort or adverse reactions.",
+        "schedule": "During the course of medication",
+        "original_source": "Remarks Patient advised to avoid other NSAIDs (Nonsteroidal Anti-Infiarmmatory Drugs) concurrently."
+      }
+    ],
+    "red_flags": [
+      "Signs of stomach discomfort or adverse reactions."
+    ],
+    "structured_summary": {
+      "follow_up": null,
+      "monitoring": "Monitor for any signs of stomach discomfort or adverse reactions.",
+      "lifestyle": "Avoid other NSAIDs concurrently.",
+      "notes": null
+    }
+  }
+}

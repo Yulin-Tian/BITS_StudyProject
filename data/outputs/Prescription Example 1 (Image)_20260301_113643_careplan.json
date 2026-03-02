@@ -1,0 +1,44 @@
+{
+  "file_name": "Prescription Example 1 (Image).png",
+  "file_type": "image",
+  "extraction_method": "tesseract (image)",
+  "warnings": [],
+  "verified_text": "Prescription\n\nDoctor’s Name\nAnna Ludwig, MD.\n\nAddress\nSt Charles, Oak Street, CA\n\nPhone number\n678-942-99\n\nPatient information\n\nName\nKarlene Hizon\n\nAddress\nAllentown Ave cor Method St, CA\n\nPhone number\n789-244-12\n\nInsurance information\nAltrust Insurance - Premium\nPrescription\n\nMedication/s\nVouprofen 400mg tablets\n\nDosage\n1 tablet\n\nFrequency and duration\n\nFrequency: Take orally, every 6 hours\nDuration: § days\n\nInstructions\n\nTake with food. Do not exceed 2400mg in 24 hours.\n\nMedical license number\n00-9987-35\n\nEmail address\nannaludwig@stcharles.org\n\nDate of birth\nMarch 5, 1953\n\nEmail address\nkarlene@email.com",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "Please confirm all information with your clinician or pharmacist.",
+    "clarification_questions": [
+      "What is the duration of the medication (in days)?"
+    ],
+    "medications": [
+      {
+        "name": "Vouprofen",
+        "strength": "400mg",
+        "form": "tablets",
+        "dosage": "1 tablet",
+        "frequency": "every 6 hours",
+        "timing": null,
+        "duration": null,
+        "original_line": "Vouprofen 400mg tablets",
+        "confidence": "high"
+      }
+    ],
+    "tasks": [
+      {
+        "category": "medication",
+        "instruction": "Take 1 tablet of Vouprofen every 6 hours with food.",
+        "schedule": null,
+        "original_source": "Take orally, every 6 hours. Take with food. Do not exceed 2400mg in 24 hours."
+      }
+    ],
+    "red_flags": [
+      "Do not exceed 2400mg in 24 hours."
+    ],
+    "structured_summary": {
+      "follow_up": null,
+      "monitoring": null,
+      "lifestyle": null,
+      "notes": "Contact your doctor if you have any concerns or experience side effects."
+    }
+  }
+}

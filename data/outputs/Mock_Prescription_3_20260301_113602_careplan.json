@@ -1,0 +1,40 @@
+{
+  "file_name": "Mock_Prescription_3.docx",
+  "file_type": "docx",
+  "extraction_method": "python-docx",
+  "warnings": [],
+  "verified_text": "MOCK MEDICAL PRESCRIPTION\nTEST DATA ONLY - NOT VALID FOR DISPENSING OR CLINICAL USE\nRx (Medications & Instructions)\nAdditional Advice\nUse lukewarm showers; pat dry; moisturise within 3 minutes after bathing. Avoid fragranced soaps and known triggers. Keep nails short to reduce skin damage from scratching.\nDISCLAIMER: This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication.",
+  "user_notes": null,
+  "care_plan": {
+    "safety_disclaimer": "This is a simulated prescription created solely for application testing and demonstration. It is not a valid medical order and must not be used to obtain or dispense medication. Always confirm with your clinician or pharmacist.",
+    "clarification_questions": [],
+    "medications": [],
+    "tasks": [
+      {
+        "category": "other",
+        "instruction": "Use lukewarm showers; pat dry; moisturise within 3 minutes after bathing.",
+        "schedule": null,
+        "original_source": "Use lukewarm showers; pat dry; moisturise within 3 minutes after bathing."
+      },
+      {
+        "category": "other",
+        "instruction": "Avoid fragranced soaps and known triggers.",
+        "schedule": null,
+        "original_source": "Avoid fragranced soaps and known triggers."
+      },
+      {
+        "category": "other",
+        "instruction": "Keep nails short to reduce skin damage from scratching.",
+        "schedule": null,
+        "original_source": "Keep nails short to reduce skin damage from scratching."
+      }
+    ],
+    "red_flags": [],
+    "structured_summary": {
+      "follow_up": null,
+      "monitoring": null,
+      "lifestyle": null,
+      "notes": null
+    }
+  }
+}
