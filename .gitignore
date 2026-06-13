@@ -5,3 +5,9 @@ __pycache__/
 *.py[cod]
 .venv/
 venv/
+
+# runtime upload artifacts (created when the API receives a file)
+data/uploads/
+
+# exported chat transcripts (session notes, not project source)
+/20??-??-??-*.txt

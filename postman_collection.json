@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "Active Care Engine API",
+    "description": "Curastra AI microservice (Phase 4-6). Yulin's lane.\n\nUsage:\n1. Set the `base_url` and `internal_key` collection variables.\n2. If the engine's INTERNAL_API_KEY is empty (dev), the key is ignored.\n3. Flip the engine's SIMULATION_MODE=true to exercise every endpoint without OpenAI cost.\n\nThis collection IS the live API contract — share it with Anurag's Node backend.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:8000" },
+    { "key": "internal_key", "value": "" }
+  ],
+  "item": [
+    {
+      "name": "Health (open, no auth)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": { "raw": "{{base_url}}/health", "host": ["{{base_url}}"], "path": ["health"] }
+      }
+    },
+    {
+      "name": "Extract — by upload (multipart)",
+      "request": {
+        "method": "POST",
+        "header": [ { "key": "X-Internal-Key", "value": "{{internal_key}}" } ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "file", "type": "file", "src": "data/inputs/Prescription Example 1 (Image).png" }
+          ]
+        },
+        "url": { "raw": "{{base_url}}/v1/extract", "host": ["{{base_url}}"], "path": ["v1", "extract"] },
+        "description": "Direct file upload. Returns extracted_text, ocr_used, low_confidence."
+      }
+    },
+    {
+      "name": "Extract — by URL (Cloudinary)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"file_url\": \"https://res.cloudinary.com/demo/image/upload/sample.jpg\",\n  \"file_name\": \"prescription.jpg\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/extract/url", "host": ["{{base_url}}"], "path": ["v1", "extract", "url"] },
+        "description": "The path Node should use: pass the Cloudinary file_url; engine downloads + OCRs it."
+      }
+    },
+    {
+      "name": "Generate — care plan from verified text",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"file_name\": \"prescription.jpg\",\n  \"verified_text\": \"Tab Augmentin 625mg PO BD x5 days after food. Tab Pan 40 OD before breakfast. Review after 5 days.\",\n  \"user_notes\": \"\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/generate", "host": ["{{base_url}}"], "path": ["v1", "generate"] },
+        "description": "Verified text (AFTER human confirmation) -> structured non-diagnostic care plan."
+      }
+    },
+    {
+      "name": "Simplify — clinical instruction",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"text\": \"Tab Augmentin 625mg PO BD x5/7 after food.\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/simplify", "host": ["{{base_url}}"], "path": ["v1", "simplify"] },
+        "description": "Returns { simplified, tts_text, disclaimer }."
+      }
+    },
+    {
+      "name": "Lab analyze — explain a lab report",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"verified_text\": \"Hemoglobin 11.2 g/dL (ref 13-17). Fasting glucose 98 mg/dL (ref 70-110). TSH 6.1 (ref 0.4-4.0).\"\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/lab-analyze", "host": ["{{base_url}}"], "path": ["v1", "lab-analyze"] },
+        "description": "Returns { summary, flags[], disclaimer }. Non-diagnostic."
+      }
+    },
+    {
+      "name": "Med safety — cross-medication alerts",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"medications\": [\n    { \"name\": \"Paracetamol 500\", \"frequency\": \"TDS\" },\n    { \"name\": \"Crocin 500\", \"frequency\": \"SOS\" },\n    { \"name\": \"Warfarin\", \"dosage\": \"5mg\" },\n    { \"name\": \"Aspirin\", \"dosage\": \"75mg\" }\n  ]\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/med-safety", "host": ["{{base_url}}"], "path": ["v1", "med-safety"] },
+        "description": "Returns { alerts[], disclaimer }. Conservative — flags things to confirm with a pharmacist."
+      }
+    },
+    {
+      "name": "Insights — from vitals/adherence",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"u_123\",\n  \"vitals_history\": [\n    { \"date\": \"2026-06-01\", \"bp\": \"128/84\" },\n    { \"date\": \"2026-06-08\", \"bp\": \"122/80\" },\n    { \"date\": \"2026-06-12\", \"bp\": \"120/79\" }\n  ],\n  \"adherence\": [\n    { \"medication\": \"Pan 40\", \"taken\": 6, \"scheduled\": 7 }\n  ]\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/insights", "host": ["{{base_url}}"], "path": ["v1", "insights"] },
+        "description": "Returns { insights[], disclaimer }. Gentle, factual, non-diagnostic."
+      }
+    },
+    {
+      "name": "Chat — AI health assistant",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "X-Internal-Key", "value": "{{internal_key}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user_id\": \"u_123\",\n  \"message\": \"What is my Pan 40 for, in simple words?\",\n  \"context\": {\n    \"medications\": [ { \"name\": \"Pan 40\", \"frequency\": \"OD\" }, { \"name\": \"Augmentin 625\" } ],\n    \"recent_vitals\": [ { \"bp\": \"120/79\" } ],\n    \"active_care_plan\": { \"summary\": \"5-day course after consultation\" }\n  }\n}"
+        },
+        "url": { "raw": "{{base_url}}/v1/chat", "host": ["{{base_url}}"], "path": ["v1", "chat"] },
+        "description": "Returns { reply, used_context, disclaimer, safety_flag }. safety_flag is 'refused' for diagnosis/treatment asks, 'advised_see_doctor' for emergencies."
+      }
+    }
+  ]
+}
