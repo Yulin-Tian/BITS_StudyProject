@@ -138,10 +138,10 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"user_id\": \"u_123\",\n  \"message\": \"What is my Pan 40 for, in simple words?\",\n  \"context\": {\n    \"medications\": [ { \"name\": \"Pan 40\", \"frequency\": \"OD\" }, { \"name\": \"Augmentin 625\" } ],\n    \"recent_vitals\": [ { \"bp\": \"120/79\" } ],\n    \"active_care_plan\": { \"summary\": \"5-day course after consultation\" }\n  }\n}"
+          "raw": "{\n  \"user_id\": \"u_123\",\n  \"message\": \"And when should I take it?\",\n  \"context\": {\n    \"medications\": [ { \"name\": \"Pan 40\", \"frequency\": \"OD\", \"timing\": \"before breakfast\" }, { \"name\": \"Augmentin 625\" } ],\n    \"recent_vitals\": [ { \"bp\": \"120/79\" } ],\n    \"active_care_plan\": { \"summary\": \"5-day course after consultation\" }\n  },\n  \"history\": [\n    { \"role\": \"user\", \"content\": \"What is my Pan 40 for?\" },\n    { \"role\": \"assistant\", \"content\": \"Pan 40 reduces stomach acid and is used for acidity.\" }\n  ]\n}"
         },
         "url": { "raw": "{{base_url}}/v1/chat", "host": ["{{base_url}}"], "path": ["v1", "chat"] },
-        "description": "Returns { reply, used_context, disclaimer, safety_flag }. safety_flag is 'refused' for diagnosis/treatment asks, 'advised_see_doctor' for emergencies."
+        "description": "Returns { reply, used_context, disclaimer, safety_flag }. safety_flag is 'refused' for diagnosis/treatment asks, 'advised_see_doctor' for emergencies. 'history' (optional) = last ~10 prior turns [{role,content}] from Node's chat_history table, for multi-turn."
       }
     }
   ]

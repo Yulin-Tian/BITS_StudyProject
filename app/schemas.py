@@ -122,6 +122,10 @@ class ChatRequest(BaseModel):
     # Node injects what it has (medications, recent_vitals, active_care_plan).
     # Kept loose so Node can evolve its shape without breaking us.
     context: Optional[Dict[str, Any]] = None
+    # Prior conversation turns for multi-turn chat. Node sends the last ~10
+    # messages from its chat_history table, oldest first. Each item:
+    # { "role": "user" | "assistant", "content": "..." }. Optional.
+    history: List[Dict[str, Any]] = Field(default_factory=list)
 
 class ChatOutput(BaseModel):
     reply: str

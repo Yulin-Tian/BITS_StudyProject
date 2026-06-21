@@ -128,10 +128,20 @@ All bodies are JSON unless noted. All AI outputs include a `disclaimer`.
 **`/v1/chat`**
 ```json
 // req
-{ "user_id": "u_123", "message": "What is my Pan 40 for?", "context": { "medications": [...], "recent_vitals": [...], "active_care_plan": {...} } }
+{
+  "user_id": "u_123",
+  "message": "And when should I take it?",
+  "context": { "medications": [...], "recent_vitals": [...], "active_care_plan": {...} },
+  "history": [                                  // optional; last ~10 turns from Node's chat_history, oldest first
+    { "role": "user", "content": "What is my Pan 40 for?" },
+    { "role": "assistant", "content": "Pan 40 reduces stomach acid." }
+  ]
+}
 // res
 { "reply": "...", "used_context": true, "disclaimer": "...", "safety_flag": null, "simulated": false }
 ```
+Node owns the database and builds `context` + `history` per request (Python is
+stateless). History is capped to the last 10 valid `{role, content}` turns.
 `safety_flag` is `"refused"` for diagnosis/treatment requests and
 `"advised_see_doctor"` for possible emergencies; otherwise `null`.
 

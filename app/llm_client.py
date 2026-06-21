@@ -17,19 +17,35 @@ def get_client() -> OpenAI:
     return OpenAI(api_key=settings.openai_api_key)
 
 
-def call_json(system_prompt: str, user_prompt: str, temperature: float = 0.2) -> dict:
+def _clean_history(history, limit: int = 10) -> list:
+    """Keep only well-formed {role: user|assistant, content: str} turns, last N."""
+    cleaned = []
+    for turn in (history or []):
+        if not isinstance(turn, dict):
+            continue
+        role = turn.get("role")
+        content = turn.get("content")
+        if role in ("user", "assistant") and isinstance(content, str) and content.strip():
+            cleaned.append({"role": role, "content": content})
+    return cleaned[-limit:]
+
+
+def call_json(system_prompt: str, user_prompt: str, temperature: float = 0.2,
+              history=None) -> dict:
     """Call the model and return parsed JSON.
 
     Uses response_format=json_object so the model is constrained to valid JSON.
+    `history` (optional) is a list of prior {role, content} turns inserted
+    between the system prompt and the final user prompt, for multi-turn chat.
     Raises RuntimeError (-> 500 with a clean message) if parsing fails.
     """
     client = get_client()
+    messages = [{"role": "system", "content": system_prompt.strip()}]
+    messages.extend(_clean_history(history))
+    messages.append({"role": "user", "content": user_prompt.strip()})
     resp = client.chat.completions.create(
         model=settings.openai_model,
-        messages=[
-            {"role": "system", "content": system_prompt.strip()},
-            {"role": "user", "content": user_prompt.strip()},
-        ],
+        messages=messages,
         temperature=temperature,
         response_format={"type": "json_object"},
     )

@@ -73,6 +73,7 @@ def chat(req: ChatRequest) -> ChatOutput:
         SYSTEM_PROMPT,
         USER_PROMPT_TEMPLATE.format(message=req.message, context=context_json),
         temperature=0.3,
+        history=req.history,   # last ~10 prior turns from Node's chat_history
     )
     return ChatOutput(
         reply=data.get("reply", ""),
